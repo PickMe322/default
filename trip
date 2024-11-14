@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace практика7
+{
+    internal class Trip
+    {
+        public Driver Driver { get; set; }
+        public Car Car { get; set; }
+        public Trip(Driver driver, Car car)
+        {
+            Driver = driver;
+            Car = car;
+        }
+        public DateTime TripDate {  get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public string DisplayTripInfo()
+        {
+            TimeSpan duration = EndTime - StartTime;
+            return($"Продолжительность поездки: {duration.Hours} часов {duration.Minutes} минут {duration.Seconds} секунд\nДата поездки: {TripDate.Day}.{TripDate.Month}.{TripDate.Year}");
+        }
+    }
+}
