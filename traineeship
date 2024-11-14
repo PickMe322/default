@@ -1,0 +1,14 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prakt_6
+{
+class Traineeship
+    {
+        public List<Student> Candidates { get; set; } = new List<Student> ();
+        public List<Department> Departments { get; set; } = new List<Department> (); 
+    }
+}
