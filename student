@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prakt_6
+{
+public enum ProgrammingLanguage
+    {
+        CPlusPlus,
+        CSharp,
+        Python,
+        Dart,
+        Java,
+        JavaScript
+    }
+class Student
+    {
+        public string Name { get; set; } // имя
+        public int CourseNumber { get; set; }
+        public ProgrammingLanguage SelectedLanguage { get; set; }
+        public double Achievement { get; set; } // успеваемость
+    }
+}
