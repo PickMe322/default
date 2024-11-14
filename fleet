@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace практика7
+{
+    internal class Fleet
+    {
+        public List<Car> Cars = new List<Car>();
+        public List<Driver> Drivers;
+        public List<Trip> Trips = new List<Trip>();
+        public string AddCar(Car car)
+        {
+            Cars.Add(car);
+            return($"{car.Model} был добавлен в автопарк");
+        }
+        public string RegisterDriver(Driver driver)
+        {
+            Drivers.Add(driver);
+            return($"{driver.Name} был зарегистрирован в автопарке");
+        }
+        public void CreateTrip(Driver driver, Car car, DateTime startTime, DateTime endTime) 
+        {
+            car.StartEngine();
+            Trip trip = new Trip(driver, car)
+            {
+                StartTime = startTime,
+                EndTime = endTime,
+                TripDate = DateTime.Now
+            };
+            car.StopEngine();
+            Trips.Add(trip);
+        }
+        public string DisplayTripInfo(List<Trip> trips)
+        {
+            string result = "";
+            foreach (Trip trip in trips) 
+            {
+                string carDetails = "";
+                if (trip.Car is Sedan sedan)
+                {
+                    carDetails += $"Автомобиль:\nМарка:{sedan.Model}\nВместимость: {sedan.TrunkCapacity} литров\nТип топлива:{sedan.FuelOftype().ToLower()}\nТип автомобиля: {sedan.GetCarType().ToLower()}\n";
+                }
+                else if (trip.Car is Truck truck)
+                {
+                    carDetails += $"Автомобиль:\nМарка:{truck.Model}\nВместимость: {truck.LoadCapacity} литров\nТип топлива:{truck.FuelOftype().ToLower()}\nТип автомобиля: {truck.GetCarType().ToLower()}\n";
+                }
+                result += $"\nВодитель: {trip.Driver.Name}\n{carDetails}\n{trip.DisplayTripInfo()}\n\n";
+            }
+            return result;
+        }
+        
+    }
+}
