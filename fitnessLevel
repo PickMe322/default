@@ -1,0 +1,111 @@
+using System;
+
+namespace _5_лаба_яп
+{
+    public class FitnessProggram
+    {
+        private string name;
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    name = value;
+                }
+            }
+        }
+
+        private string exercisePlan;
+        public string ExercisePlan
+        {
+            get { return exercisePlan; }
+            private set { exercisePlan = value; }
+        }
+
+        public int CaloriesBurned { get;  private set; }
+        public int TotalExercises { get;  private set; }
+
+        public FitnessProggram(int calories, int exercises)
+        {
+            CaloriesBurned = calories;
+            TotalExercises = exercises;
+        }
+
+        private int dailyTargetCalories;
+        public int DailyTargetCalories
+        {
+            get { return dailyTargetCalories; }
+            set { dailyTargetCalories = value; }
+        }
+
+        public string FitnessLevel
+        {
+            get
+            {
+                if (CaloriesBurned > 2000)
+                {
+                    return "Спортсмен";
+                }
+                else if (CaloriesBurned <= 2000 && CaloriesBurned > 1000)
+                {
+                    return "Активный";
+                }
+                else
+                {
+                    return "Новичок";
+                }
+            }
+        }
+
+        public bool Warning
+        {
+            get
+            {
+                return CaloriesBurned < DailyTargetCalories;
+            }
+        }
+
+        public void ChangeExercisePlan(string newPlan)
+        {
+            ExercisePlan = newPlan;
+        }
+        public void AddOrDeletePlan(string plan, string choice)
+        {
+            if (choice.ToLower() == "добавить")
+            {
+                ExercisePlan += " " + plan;
+            }
+            else
+            {
+                ExercisePlan = ExercisePlan.Replace(plan, "");
+            }
+        }
+        public void CompleteExercise(int calories)
+        {
+            CaloriesBurned += calories;
+            TotalExercises++;
+        }
+
+        public void SetDailyTargetCalories(int target)
+        {
+            DailyTargetCalories = target;
+        }
+
+        public string Motivate()
+        {
+            string[] motivation = new string[]
+            {
+                "Если вы можете мечтать об этом, вы можете это сделать!",
+                "Не считай дни, извлекай из них пользу",
+                "Не ждите. Время никогда не будет подходящим",
+                "Усердно работайте, мечтайте по-крупному",
+                "Измени свои мысли и ты изменишь мир"
+            };
+            Random random = new Random();
+            int randomNumber = random.Next(0, motivation.Length);
+            return motivation[randomNumber];
+        }
+    }
+}
