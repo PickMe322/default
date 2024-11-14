@@ -1,0 +1,145 @@
+using System;
+
+namespace _5_лаба_яп
+{
+  internal class Program
+    {
+        static void Main(string[] args)
+        {
+            FitnessProggram fitness = new FitnessProggram(0, 0);
+
+            bool isReg = false;
+            while (true) 
+            {
+                Console.WriteLine("Выберите действие: ");
+                Console.WriteLine("1. Задать имя и план тренеровок ");
+                Console.WriteLine("2. Установить целевую норму калорий ");
+                Console.WriteLine("3. Задать новый план тренеровок ");
+                Console.WriteLine("4. Поменять план тренеровок");
+                Console.WriteLine("5. Выполнить упражнение ");
+                Console.WriteLine("6. Вывести текущую информацию об уровне физической подготовки пользователя");
+                Console.WriteLine("7. Вывести мотивационное сообщение");
+                Console.WriteLine("8. Выход");
+                Console.WriteLine();
+
+                int pick;
+                
+
+                if (!int.TryParse(Console.ReadLine(), out pick))
+                {
+                    Console.WriteLine("Некорректный ввод, попробуйте снова.");
+                    continue;
+                }
+                
+                switch (pick)
+                {
+                    case 1:
+                        Console.WriteLine("Введите имя: ");
+                        fitness.Name = Console.ReadLine();
+                        Console.WriteLine("Введите план тренировок (через пробел): ");
+                        fitness.ChangeExercisePlan(Console.ReadLine());
+                        Console.WriteLine($"Текущее имя: {fitness.Name}, текущий план тренеровок: {fitness.ExercisePlan}");
+                        isReg = true;
+                        break;
+                    
+                    case 2:
+                        if (!isReg)
+                        {
+                            Console.WriteLine("Зарегистрируйтесь в пункте 1!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Введите целевую норму калорий: ");
+                            fitness.SetDailyTargetCalories(Convert.ToInt32(Console.ReadLine()));
+                            Console.WriteLine($"Целевая норма калорий: {fitness.DailyTargetCalories}");
+                            break;
+                        }
+                        
+
+                    case 3:
+                        if (!isReg)
+                        {
+                            Console.WriteLine("Зарегистрируйтесь в пункте 1!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Введите новый план тренировок: ");
+                            fitness.ChangeExercisePlan(Console.ReadLine());
+                            Console.WriteLine($"Новый план тренеровок: {fitness.ExercisePlan}");
+                            break;
+                        }
+                        
+
+                    case 4:
+                        if (!isReg)
+                        {
+                            Console.WriteLine("Зарегистрируйтесь в пункте 1!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Введите изменение плана тренировок: ");
+                            string plan = Console.ReadLine();
+                            Console.WriteLine("Вы хотите 'добавить' или 'убрать'?: ");
+                            string choice = Console.ReadLine();
+                            fitness.AddOrDeletePlan(plan, choice);
+                            Console.WriteLine($"Обновленный план тренеровок: {fitness.ExercisePlan}");
+                            break;
+                        }
+                       
+
+                    case 5:
+                        if (!isReg)
+                        {
+                            Console.WriteLine("Зарегистрируйтесь в пункте 1!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Введите количество сожженных калорий: ");
+                            fitness.CompleteExercise(Convert.ToInt32(Console.ReadLine()));
+                            Console.WriteLine($"Вы сожгли {fitness.CaloriesBurned} калорий");
+                            break;
+                        }
+                        
+
+                    case 6:
+                        if (!isReg)
+                        {
+                            Console.WriteLine("Зарегистрируйтесь в пункте 1!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Уровень физической подготовки: {fitness.FitnessLevel}");
+                            break;
+                        }
+                        
+
+                    case 7:
+                        if (!isReg)
+                        {
+                            Console.WriteLine("Зарегистрируйтесь в пункте 1!");
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine(fitness.Motivate());
+                            break;
+                        }
+                    case 8:
+                        return;
+                    default:
+                        Console.WriteLine("Некорректный выбор, попробуйте снова.");
+                        break;
+                }
+
+                Console.WriteLine();
+                
+            }
+        }
+    }
+}
+}
