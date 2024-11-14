@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prakt_6
+{
+class MobileApplicationDevelopment : Department
+        {
+            public override void TraineeDistribution(List<Student> candidates)
+            {
+
+                foreach (var candidate in candidates.ToList())
+                {
+                    if ((candidate.CourseNumber == 3 && candidate.Achievement >= 0.9 && (candidate.SelectedLanguage == ProgrammingLanguage.Dart) && NumberOfPositions != 0))
+                    {
+                        Trainees.Add(candidate);
+                        candidates.Remove(candidate);
+                        NumberOfPositions--;
+                    }
+                }
+            }
+        }
+}
