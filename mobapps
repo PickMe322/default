@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prakt_6
+{
+    class MobileApplicationDevelopment : Department
+    {
+        public override void TraineeDistribution(List<Student> candidates)
+        {
+
+            foreach (var candidate in candidates.ToList())
+            {
+                if ((candidate.CourseNumber == 3 && candidate.Achievement >= 0.9 && (candidate.SelectedLanguage == ProgrammingLanguage.Dart) && NumberOfPositions != 0))
+                {
+                    Trainees.Add(candidate);
+                    candidates.Remove(candidate);
+                    NumberOfPositions--;
+                }
+            }
+        }
+        public new string PrintTrainees()
+        {
+            Console.WriteLine("!MobApps набирает!");
+            string result = base.PrintTrainees();
+            int i = 0;
+            foreach (var candidate in Trainees)
+            {
+                i++;
+                result = result.Replace($"|{i}", $", selected language: {candidate.SelectedLanguage}, course number: {candidate.CourseNumber}|");
+            }
+            return result;
+        }
+    }
+}
