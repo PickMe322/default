@@ -1,0 +1,66 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace практика7
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            {
+                Sedan car1 = new Sedan() { LicensePlate = "A815KB", Model = "Hyndai Solaris", TrunkCapacity = 10 };
+
+                Truck car2 = new Truck() { LicensePlate = "B155KA", LoadCapacity = 1000, Model = "Kamaz" };
+
+                Sedan car3 = new Sedan() { LicensePlate = "B777BB", Model = "Ford Focus", TrunkCapacity = 15 };
+
+                MedicalCertificate certificate1 = new MedicalCertificate() { CertificateNumber = 14114114, DoctorName = "Rob", IssueDate = DateTime.Now };
+
+                Driver driver1 = new Driver(certificate1) { ExperienceYears = 5, Name = "Seregga" };
+
+                MedicalCertificate certificate2 = new MedicalCertificate() { CertificateNumber = 124221, DoctorName = "Robert", IssueDate = DateTime.Now };
+
+                Driver driver2 = new Driver(certificate2) { ExperienceYears = 10, Name = "Azazlo" };
+
+                MedicalCertificate certificate3 = new MedicalCertificate() { CertificateNumber = 43433423, DoctorName = "Roberto", IssueDate = DateTime.Now };
+
+                Driver driver3 = new Driver(certificate3) { ExperienceYears = 30, Name = "Fedor" };
+                
+
+
+                DateTime startTime1 = new DateTime(2024, 11, 10, 10, 11, 20);
+                DateTime endTime1 = new DateTime(2024, 11, 11, 20, 20, 50);
+
+                DateTime startTime2 = new DateTime(2024, 11, 10, 3, 55, 17);
+                DateTime endTime2 = new DateTime(2024, 11, 11, 5, 10, 1);
+
+                DateTime startTime3 = new DateTime(2024, 11, 10, 20, 35, 59);
+                DateTime endTime3 = new DateTime(2024, 11, 11, 23, 23, 40);
+
+                Fleet fleet = new Fleet
+                {
+                    Cars = new List<Car>(),
+                    Drivers = new List<Driver>(),
+                    Trips = new List<Trip>()
+                };
+
+                fleet.RegisterDriver(driver1);
+                fleet.RegisterDriver(driver2);
+                fleet.RegisterDriver(driver3);
+
+                fleet.AddCar(car1);
+                fleet.AddCar(car2);
+                fleet.AddCar(car3);
+
+                fleet.CreateTrip(fleet.Drivers[0], fleet.Cars[0], startTime1, endTime1);
+                fleet.CreateTrip(fleet.Drivers[1], fleet.Cars[1], startTime2, endTime2);
+                fleet.CreateTrip(fleet.Drivers[2], fleet.Cars[2], startTime3, endTime3);
+
+                Console.WriteLine(fleet.DisplayTripInfo(fleet.Trips));
+            }
+        }
+    }
+}
