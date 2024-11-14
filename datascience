@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prakt_6
+{
+  class DataScience : Department
+        {
+            public override void TraineeDistribution(List<Student> candidates)
+            {
+
+                foreach (var candidate in candidates.ToList())
+                {
+                    if ((candidate.Achievement >= 0.85 && (candidate.SelectedLanguage == ProgrammingLanguage.Python) && NumberOfPositions != 0))
+                    {
+                        Trainees.Add(candidate);
+                        candidates.Remove(candidate);
+                        NumberOfPositions--;
+                    }
+                }
+            }
+        }
+}
