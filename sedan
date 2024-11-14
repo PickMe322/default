@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace практика7
+{
+    internal class Sedan : Car
+    {
+        public int TrunkCapacity {  get; set; }
+        public new string GetCarType()
+        {
+            return ("cедан");
+        }
+        public new string FuelOftype()
+        {
+            return "Бензин";
+        }
+    }
+}
