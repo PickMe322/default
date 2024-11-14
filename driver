@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace практика7
+{
+    internal class Driver
+    {
+        public string Name {  get; set; }
+        public int ExperienceYears {  get; set; }
+
+        private MedicalCertificate MedicalCertificate { get; set; }
+        public Driver(MedicalCertificate MedicalCertificate)
+        {
+            this.MedicalCertificate = new MedicalCertificate();
+        }
+    }
+}
