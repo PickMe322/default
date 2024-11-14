@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace практика7
+{
+    internal class Car
+    {
+        public string Model { get; set; }
+        public string LicensePlate { get; set; }
+        public string StartEngine()
+        {
+            return "Engine started!";
+        }
+        public string StopEngine() 
+        {
+            return "Engine stopped!";
+        }
+        public string GetCarType()
+        {
+            return "";        }
+        public string FuelOftype()
+        {
+            string result = "";
+            return result;
+        }
+    }
+}
