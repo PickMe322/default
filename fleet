@@ -24,14 +24,12 @@ namespace практика7
         }
         public void CreateTrip(Driver driver, Car car, DateTime startTime, DateTime endTime) 
         {
-            car.StartEngine();
             Trip trip = new Trip(driver, car)
             {
                 StartTime = startTime,
                 EndTime = endTime,
                 TripDate = DateTime.Now
             };
-            car.StopEngine();
             Trips.Add(trip);
         }
         public string DisplayTripInfo(List<Trip> trips)
