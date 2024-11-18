@@ -9,11 +9,7 @@ namespace практика7
     internal class Truck : Car
     {
         public int LoadCapacity {  get; set; }
-        public string GetCarType()
-        {
-            return ("грузовик");
-        }
-        public new string FuelOftype()
+        public override string FuelOftype()
         {
             return "Дизельное топливо";
         }
