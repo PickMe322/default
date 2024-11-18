@@ -11,10 +11,10 @@ namespace практика7
         public string Name {  get; set; }
         public int ExperienceYears {  get; set; }
 
-        private MedicalCertificate MedicalCertificate { get; set; }
-        public Driver(MedicalCertificate MedicalCertificate)
+        public MedicalCertificate MedicalCertificate { get; set; }
+        public Driver()
         {
-            this.MedicalCertificate = new MedicalCertificate();
+            MedicalCertificate = new MedicalCertificate();
         }
     }
 }
