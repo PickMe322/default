@@ -22,34 +22,36 @@ namespace практика7
             Drivers.Add(driver);
             return($"{driver.Name} был зарегистрирован в автопарке");
         }
-        public void CreateTrip(Driver driver, Car car, DateTime startTime, DateTime endTime) 
+        public void CreateTrip(Driver driver, Car car, DateTime startTime, DateTime endTime, DateTime tripDate) 
         {
             Trip trip = new Trip(driver, car)
             {
                 StartTime = startTime,
                 EndTime = endTime,
-                TripDate = DateTime.Now
+                TripDate = tripDate
             };
             Trips.Add(trip);
         }
-        public string DisplayTripInfo(List<Trip> trips)
+        public string DisplayTripsByDate(List<Trip> trips, DateTime date)
         {
             string result = "";
             foreach (Trip trip in trips) 
             {
                 string carDetails = "";
+                string carType = trip.Car is Sedan ? "седан" : "грузовой автомобиль";
                 if (trip.Car is Sedan sedan)
                 {
-                    carDetails += $"Автомобиль:\nМарка:{sedan.Model}\nВместимость: {sedan.TrunkCapacity} литров\nТип топлива:{sedan.FuelOftype().ToLower()}\nТип автомобиля: {sedan.GetCarType().ToLower()}\n";
+                    carDetails += $"Автомобиль:\nМарка:{trip.Car.Model}\nВместимость: {sedan.TrunkCapacity} литров\nТип топлива:{sedan.FuelOftype().ToLower()}\nТип автомобиля: {carType.ToLower()}\n";
                 }
                 else if (trip.Car is Truck truck)
                 {
-                    carDetails += $"Автомобиль:\nМарка:{truck.Model}\nВместимость: {truck.LoadCapacity} литров\nТип топлива:{truck.FuelOftype().ToLower()}\nТип автомобиля: {truck.GetCarType().ToLower()}\n";
+                    carDetails += $"Автомобиль:\nМарка:{trip.Car.Model}\nВместимость: {truck.LoadCapacity} литров\nТип топлива:{truck.FuelOftype().ToLower()}\nТип автомобиля: {carType.ToLower()}\n";
                 }
-                result += $"\nВодитель: {trip.Driver.Name}\n{carDetails}\n{trip.DisplayTripInfo()}\n\n";
+            result += (trip.TripDate.Year == date.Year && trip.TripDate.Month == date.Month && trip.TripDate.Day == date.Day) ? $"\nВодитель: {trip.Driver.Name}\n{carDetails}\n{trip.DisplayTripInfo()}\n\n" : "";
             }
             return result;
         }
         
     }
 }
+
