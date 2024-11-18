@@ -21,7 +21,8 @@ namespace практика7
         public string DisplayTripInfo()
         {
             TimeSpan duration = EndTime - StartTime;
-            return($"Продолжительность поездки: {duration.Hours} часов {duration.Minutes} минут {duration.Seconds} секунд\nДата поездки: {TripDate.Day}.{TripDate.Month}.{TripDate.Year}");
+            return($"Продолжительность поездки: {duration.Hours} часов {duration.Minutes} минут {duration.Seconds} секунд");
         }
     }
 }
+
