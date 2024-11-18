@@ -9,7 +9,7 @@ namespace практика7
     internal class Sedan : Car
     {
         public int TrunkCapacity {  get; set; }
-        public new string GetCarType()
+        public string GetCarType()
         {
             return ("cедан");
         }
