@@ -10,17 +10,6 @@ namespace практика7
     {
         public string Model { get; set; }
         public string LicensePlate { get; set; }
-        public string StartEngine()
-        {
-            return "Engine started!";
-        }
-        public string StopEngine() 
-        {
-            return "Engine stopped!";
-        }
-        public string GetCarType()
-        {
-            return "";        }
         public string FuelOftype()
         {
             string result = "";
