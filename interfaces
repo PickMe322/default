@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _9_laba
+{
+    public interface IHaveAngryResidents
+    {
+        bool HaveAngryResidents { get; set; }
+    }
+    public interface IRequireSamples
+    {
+        bool RequireSamples { get; set; }
+    }
+    public interface IRequireSurvivalTest
+    {
+        bool RequireSurvivalTest { get; set; }
+    }
+}
