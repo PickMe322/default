@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _9_laba
+{
+    internal class Student
+    {
+        public string Name { get; set; }
+        public bool HasSurvTest {  get; set; }
+        public bool HasSamples {  get; set; }
+        public Student(string name, bool hasSurvTest = false, bool hasSample = false)
+        {
+            Name = name;
+            HasSurvTest = hasSurvTest;
+            HasSamples = hasSample;
+        }
+    }
+}
