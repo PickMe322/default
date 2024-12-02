@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _9_laba
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Student> students = new List<Student>
+            {
+                new Student ("Петя", true, true),
+                new Student ("Маша", false, true),
+                new Student ("Маша", false, true),
+                new Student ("Миша", true, true),
+                new Student ("Кеша", false, true),
+                new Student ("Гена", false, false),
+                new Student ("Вова", true, true),
+                new Student ("Гриша", false, true),
+                new Student ("Ксюша", true, false),
+            };
+            List<Planet> planets = new List<Planet>
+            {
+                new Mars(false, true, true),
+                new Jupiter(false, true, false),
+                new Mercury(false, false, true),
+                new Saturn(false, true, false),
+                new Venus(true, false, false)
+            };
+            foreach (Planet planet in planets)
+            {
+                Console.WriteLine(planet.Name);
+                Console.WriteLine("====================================");
+                foreach (Student student in students.ToList())
+                { 
+                    string result = planet.Check(student);
+                    if (result == "На планете зафиксированы враждебные сущности")
+                    {
+                        Console.WriteLine(result);
+                        break;
+                    }
+                    else
+                        Console.WriteLine(result);
+                }
+                Console.WriteLine("\n");
+            }
+        }
+    }
+}
