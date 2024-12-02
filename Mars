@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _9_laba
+{
+    internal class Mars : Planet, IRequireSurvivalTest, IRequireSamples
+    {
+        public bool RequireSurvivalTest { get; set; }
+        public bool HaveAngryResidents {  get; set; }
+        public bool RequireSamples { get; set; }
+        public Mars(bool angryRes, bool needProbs, bool test)
+        {
+            HaveAngryResidents = angryRes;
+            RequireSamples = needProbs;
+            RequireSurvivalTest = test;
+        }
+        public override string Name { get { return "Марс"; } }
+        
+        public override string Check(Student student)
+        {
+            if (!HaveAngryResidents)
+            {
+                if (!student.HasSamples && !student.HasSurvTest)
+                {
+                    return $"У студента {student.Name} недостаточно образцов и плохой тест выживаемости!";
+                }
+                else if (!student.HasSamples && student.HasSurvTest) 
+                { 
+                    return $"У студента {student.Name} недостаточно образцов!"; 
+                }
+                else if (!student.HasSurvTest && student.HasSamples)
+                {
+                    return $"У студента {student.Name} плохой тест выживаемости!";
+                }
+                else
+                {
+                    return $"Студент {student.Name} подходит к выполнению миссии";
+                }
+            }
+            else
+            {
+                return "На планете зафиксированы враждебные сущности";
+            }
+        }
+    }
+}
